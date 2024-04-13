@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
+import { styles, resultsStyles, detailStyles } from './AppStyles'; 
 function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -88,6 +89,8 @@ function HomeScreen({ navigation }) {
     });
 
     navigation.navigate('Results', { from, to, day, passengers, results: filteredTrips });
+    
+
   };
 
   return (
@@ -101,14 +104,14 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function ResultsScreen({ route }) {
+function ResultsScreen({ route, navigation }) {
   const { results } = route.params;
 
   return (
     <View style={resultsStyles.container}>
       <ScrollView contentContainerStyle={resultsStyles.scrollView}>
         {results.map((trip, index) => (
-          <TripCard key={index} trip={trip} />
+          <TripCard key={index} trip={trip} navigation={navigation} />
         ))}
       </ScrollView>
     </View>
@@ -160,44 +163,64 @@ function HomeTabs() {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Trips" component={TripsScreen} />
       <Tab.Screen name="Account" component={AccountScreen} />
+      <Tab.Screen name="Results" component={ResultsScreen} />
     </Tab.Navigator>
 );
 }
-function TripCard({ trip }) {
+function TripCard({ trip, navigation }) {
   return (
     <TouchableOpacity onPress={() => navigation.navigate('TripDetail', { trip })}>
-    <View style={resultsStyles.card}>
-      <View style={resultsStyles.header}>
-        <Text style={resultsStyles.headerTextCentered}>{trip.from} -> {trip.to}</Text>
-        <Text style={resultsStyles.headerTextCentered}>{trip.day}</Text>
-      </View>
-      <View style={resultsStyles.timeline}>
-        <Text style={resultsStyles.time}>{trip.startTime}</Text>
-        <View style={resultsStyles.line}>
-          <View style={[resultsStyles.dot, resultsStyles.firstDot]}></View>
-          <View style={resultsStyles.lineFill}></View>
-          <View style={[resultsStyles.dot, resultsStyles.lastDot]}></View>
+      <View style={resultsStyles.card}>
+        <View style={resultsStyles.header}>
+          <Text style={resultsStyles.headerTextCentered}>{trip.from} -> {trip.to}</Text>
+          <Text style={resultsStyles.headerTextCentered}>{trip.day}</Text>
         </View>
-        <Text style={resultsStyles.time}>{trip.endTime}</Text>
-      </View>
-      <View style={resultsStyles.driverAndPassengerInfo}>
-        <View style={resultsStyles.driverInfo}>
-          <Image source={typeof trip.driver.imageUrl === 'string' ? { uri: trip.driver.imageUrl } : trip.driver.imageUrl} style={resultsStyles.driverImage} />
-          <View style={resultsStyles.driverDetails}>
-            <Text style={resultsStyles.driverName}>{trip.driver.name}</Text>
-            <Text style={resultsStyles.rating}><Ionicons name="star" size={16} color="#ffd700" /> {trip.driver.rating}</Text>
+        <View style={resultsStyles.timeline}>
+          <Text style={resultsStyles.time}>{trip.startTime}</Text>
+          <View style={resultsStyles.line}>
+            <View style={[resultsStyles.dot, resultsStyles.firstDot]}></View>
+            <View style={resultsStyles.lineFill}></View>
+            <View style={[resultsStyles.dot, resultsStyles.lastDot]}></View>
+          </View>
+          <Text style={resultsStyles.time}>{trip.endTime}</Text>
+        </View>
+        <View style={resultsStyles.driverAndPassengerInfo}>
+          <View style={resultsStyles.driverInfo}>
+            <Image source={typeof trip.driver.imageUrl === 'string' ? { uri: trip.driver.imageUrl } : trip.driver.imageUrl} style={resultsStyles.driverImage} />
+            <View style={resultsStyles.driverDetails}>
+              <Text style={resultsStyles.driverName}>{trip.driver.name}</Text>
+              <Text style={resultsStyles.rating}><Ionicons name="star" size={16} color="#ffd700" /> {trip.driver.rating}</Text>
+            </View>
+          </View>
+          <View style={resultsStyles.passengerInfo}>
+            <Text style={resultsStyles.passengerText}>{trip.passengers} pass.</Text>
           </View>
         </View>
-        <View style={resultsStyles.passengerInfo}>
-          <Text style={resultsStyles.passengerText}>{trip.passengers} Passengers</Text>
-        </View>
       </View>
-    </View>
     </TouchableOpacity>
   );
 }
+function TripDetailScreen({ route }) {
+  const { trip } = route.params;
 
-
+  return (
+      <View style={resultsStyles.detailContainer}>
+          <View style={resultsStyles.card}>
+              <Text style={resultsStyles.detailItem}>From: {trip.from}</Text>
+              <Text style={resultsStyles.detailItem}>To: {trip.to}</Text>
+              <Text style={resultsStyles.detailItem}>Day: {trip.day}</Text>
+              <Text style={resultsStyles.detailItem}>Time: {trip.startTime} - {trip.endTime}</Text>
+              <Text style={resultsStyles.detailItem}>Passengers: {trip.passengers}</Text>
+              <Text style={resultsStyles.detailItem}>Price: {trip.price}</Text>
+              <View style={resultsStyles.driverInfo}>
+                  <Image source={typeof trip.driver.imageUrl === 'string' ? { uri: trip.driver.imageUrl } : trip.driver.imageUrl} style={resultsStyles.driverImage} />
+                  <Text style={resultsStyles.detailItem}> {trip.driver.name}</Text>
+                  <Text style={resultsStyles.detailItem}> {trip.driver.rating} <Ionicons name="star" size={16} color="#ffd700" /></Text>
+              </View>
+          </View>
+      </View>
+  );
+}
 
 
 
@@ -208,140 +231,9 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeTabs} />
         <Stack.Screen name="Results" component={ResultsScreen} options={{ headerShown: true }} />
+        <Stack.Screen name="TripDetail" component={TripDetailScreen} options={{ headerShown: true }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  input: {
-    width: '100%',
-    height: 40,
-    marginBottom: 10,
-    borderWidth: 1,
-    padding: 10,
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
-  resultContainer: {
-    padding: 10,
-    marginVertical: 5,
-    borderWidth: 1,
-    borderColor: '#ccc',
-  }
-});
-
-const resultsStyles = StyleSheet.create({
-  card: {
-      backgroundColor: '#FFF',
-      padding: 20,
-      marginVertical: 10,
-      borderRadius: 10,
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.1,
-      shadowRadius: 1.5,
-      elevation: 3,
-      width: '90%',
-      alignSelf: 'center',
-  },
-  header: {
-      marginBottom: 10,
-      alignItems: 'center',
-      justifyContent: 'center',
-  },
-  headerTextCentered: {
-      fontSize: 16,
-      fontWeight: 'bold',
-      textAlign: 'center'
-  },
-  timeline: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      marginBottom: 10,
-  },
-  time: {
-      fontSize: 16,
-      color: '#333',
-  },
-  line: {
-    flex: 1,
-    flexDirection: 'row',
-    height: 1,
-    backgroundColor: 'transparent', // Making sure the line background doesn't interfere
-    marginHorizontal: 10,
-    alignItems: 'center', // Ensures vertical centering
-    position: 'relative', // Important for absolute positioning of the dots
-  },
-  dot: {
-    width: 8,
-    height: 8,
-    backgroundColor: 'red',
-    borderRadius: 4,
-    position: 'absolute', // Positioning absolutely within the parent container
-  },
-  line: {
-      flex: 1,
-      flexDirection: 'row',
-      height: 1,
-      backgroundColor: '#ccc',
-      marginHorizontal: 10,
-      position: 'relative', // Essential for absolute positioning of the dots
-      alignItems: 'center',
-  },
-  firstDot: {
-      left: 0, // Align this dot to the left edge
-      marginTop: -4, // Vertically center the dot
-  },
-  lastDot: {
-      right: 0, // Align this dot to the right edge
-      marginTop: -4, // Vertically center the dot
-  },
-  driverAndPassengerInfo: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',  
-      width: '100%',  
-  },
-  driverInfo: {
-      flexDirection: 'row',
-      alignItems: 'center',
-  },
-  driverImage: {
-      width: 50,
-      height: 50,
-      borderRadius: 25,
-      marginRight: 10,
-  },
-  driverDetails: {
-      flexDirection: 'column',
-      justifyContent: 'center',
-  },
-  driverName: {
-      fontSize: 16,
-      fontWeight: 'bold',
-  },
-  rating: {
-      fontSize: 16,
-      color: '#ffd700',
-  },
-  passengerInfo: {
-      // This style is for the container of the passenger count text
-      marginLeft: 5,  // Adjust this as needed to position the passenger count text appropriately
-  },
-  passengerText: {
-      fontSize: 16,
-      fontWeight: 'bold',
-      color: '#666',
-  },
-});
 
