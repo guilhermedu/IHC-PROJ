@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import profilePic from './assets/icon.png';
 import { ScrollView,Text,StyleSheet, TextInput, View, Image, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -47,9 +47,34 @@ function HomeScreen({ navigation }) {
   const searchTrips = () => {
     // Fake results data; replace with your actual data logic
     const results = [
-      { time: '10:30', from: 'OVAR', price: '2,50$', destination: 'AVEIRO' },
-      { time: '11:00', from: 'OVAR', price: '3,00$', destination: 'AVEIRO' }
+      {
+        startTime: '10:30',
+        endTime: '11:00',
+        from: 'OVAR',
+        to: 'AVEIRO',
+        price: '2,50$',
+        duration: '30 mins',
+        driver: {
+          name: 'Adrego da Rocha',
+          imageUrl: profilePic,
+          rating: 4.5
+        }
+      },
+      {
+        startTime: '12:00',
+        endTime: '12:45',
+        from: 'OVAR',
+        to: 'AVEIRO',
+        price: '3,00$',
+        duration: '45 mins',
+        driver: {
+          name: 'Sr Engenheiro',
+          imageUrl: profilePic,
+          rating: 4.8
+        }
+      }
     ];
+    
     navigation.navigate('Results', { from, to, day, passengers, results });
   };
 
@@ -70,32 +95,8 @@ function ResultsScreen({ route }) {
   return (
     <View style={resultsStyles.container}>
       <ScrollView contentContainerStyle={resultsStyles.scrollView}>
-        {results.map((result, index) => (
-          <View key={index} style={resultsStyles.card}>
-            <View style={resultsStyles.cardHeader}>
-              {/* Check if result.driver and result.driver.imageUrl exist before rendering Image */}
-              {result.driver && result.driver.imageUrl ? (
-                <Image source={{ uri: result.driver.imageUrl }} style={styles.driverImage} />
-              ) : (
-                <View style={styles.placeholderImage}></View>  // Placeholder in case there's no image
-              )}
-              <View style={styles.driverInfo}>
-                <Text style={styles.driverName}>{result.driver ? result.driver.name : 'Unknown Driver'}</Text>
-                <Text>
-                  {result.driver && result.driver.rating}
-                  <Ionicons name="star" size={16} color="#ffd700" />
-                </Text>
-              </View>
-            </View>
-            <View style={styles.rideInfo}>
-              <Text>Start: {result.startTime}</Text>
-              <Text>Duration: {result.duration}</Text>
-              <Text>End: {result.endTime}</Text>
-              <Text>From: {result.from}</Text>
-              <Text>To: {result.to}</Text>
-              <Text>Price: {result.price}</Text>
-            </View>
-          </View>
+        {results.map((trip, index) => (
+          <TripCard key={index} trip={trip} />
         ))}
       </ScrollView>
     </View>
@@ -150,6 +151,41 @@ function HomeTabs() {
     </Tab.Navigator>
 );
 }
+function TripCard({ trip }) {
+  return (
+    <View style={resultsStyles.card}>
+      <View style={resultsStyles.header}>
+        <Text style={resultsStyles.headerTextCentered}>{trip.from} -> {trip.to}</Text>
+        <Text style={resultsStyles.headerTextCentered}>{trip.day}</Text>
+      </View>
+      <View style={resultsStyles.timeline}>
+        <Text style={resultsStyles.time}>{trip.startTime}</Text>
+        <View style={resultsStyles.line}>
+          <View style={resultsStyles.dot}></View>
+          <View style={resultsStyles.lineFill}></View>
+          <View style={resultsStyles.dot}></View>
+        </View>
+        <Text style={resultsStyles.time}>{trip.endTime}</Text>
+      </View>
+      <View style={resultsStyles.driverAndPassengerInfo}>
+        <View style={resultsStyles.driverInfo}>
+          <Image source={typeof trip.driver.imageUrl === 'string' ? { uri: trip.driver.imageUrl } : trip.driver.imageUrl} style={resultsStyles.driverImage} />
+          <View style={resultsStyles.driverDetails}>
+            <Text style={resultsStyles.driverName}>{trip.driver.name}</Text>
+            <Text style={resultsStyles.rating}><Ionicons name="star" size={16} color="#ffd700" /> {trip.driver.rating}</Text>
+          </View>
+        </View>
+        <View style={resultsStyles.passengerInfo}>
+          <Text style={resultsStyles.passengerText}>{trip.passengers} pass.</Text>
+        </View>
+      </View>
+    </View>
+  );
+}
+
+
+
+
 
 export default function App() {
   return (
@@ -190,46 +226,93 @@ const styles = StyleSheet.create({
 });
 
 const resultsStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 10,
-  },
-  scrollView: {
-    width: '100%',
-  },
   card: {
-    backgroundColor: '#FFF',
-    padding: 15,
-    borderRadius: 8,
-    marginVertical: 10,
-    width: '90%',
-    alignSelf: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-    elevation: 2,
+      backgroundColor: '#FFF',
+      padding: 20,
+      marginVertical: 10,
+      borderRadius: 10,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 1.5,
+      elevation: 3,
+      width: '90%',
+      alignSelf: 'center',
   },
-  cardHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
+  header: {
+      marginBottom: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
   },
-  driverImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginRight: 10,
+  headerTextCentered: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      textAlign: 'center'
+  },
+  timeline: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: 10,
+  },
+  time: {
+      fontSize: 16,
+      color: '#333',
+  },
+  line: {
+      flex: 1,
+      flexDirection: 'row',
+      height: 1,
+      backgroundColor: '#ccc',
+      marginHorizontal: 10,
+  },
+  dot: {
+      width: 8,
+      height: 8,
+      backgroundColor: 'red',
+      borderRadius: 4,
+  },
+  lineFill: {
+      height: 1,
+      backgroundColor: 'green',
+      flex: 1,
+  },
+  driverAndPassengerInfo: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',  // Ensures the driver info and passenger count are on opposite ends
+      width: '100%',  // Use the full width of the card
   },
   driverInfo: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
+      flexDirection: 'row',
+      alignItems: 'center',
+  },
+  driverImage: {
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+      marginRight: 10,
+  },
+  driverDetails: {
+      flexDirection: 'column',
+      justifyContent: 'center',
   },
   driverName: {
-    fontWeight: 'bold',
+      fontSize: 16,
+      fontWeight: 'bold',
   },
-  rideInfo: {
-    marginTop: 5,
+  rating: {
+      fontSize: 16,
+      color: '#ffd700',
+  },
+  passengerInfo: {
+      // This style is for the container of the passenger count text
+      marginLeft: 5,  // Adjust this as needed to position the passenger count text appropriately
+  },
+  passengerText: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: '#666',
   },
 });
+
