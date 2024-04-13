@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native';
 function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -45,13 +46,14 @@ function HomeScreen({ navigation }) {
   const [passengers, setPassengers] = useState('');
 
   const searchTrips = () => {
-    // Fake results data; replace with your actual data logic
-    const results = [
+    const allTrips = [
       {
         startTime: '10:30',
         endTime: '11:00',
         from: 'OVAR',
         to: 'AVEIRO',
+        day: 'Monday',
+        passengers: '1',
         price: '2,50$',
         duration: '30 mins',
         driver: {
@@ -65,6 +67,8 @@ function HomeScreen({ navigation }) {
         endTime: '12:45',
         from: 'OVAR',
         to: 'AVEIRO',
+        day: 'Tuesday',
+        passengers: '2',
         price: '3,00$',
         duration: '45 mins',
         driver: {
@@ -74,8 +78,16 @@ function HomeScreen({ navigation }) {
         }
       }
     ];
-    
-    navigation.navigate('Results', { from, to, day, passengers, results });
+
+    // Filter trips based on user input
+    const filteredTrips = allTrips.filter(trip => {
+      return trip.from.toLowerCase() === from.trim().toLowerCase() &&
+             trip.to.toLowerCase() === to.trim().toLowerCase() &&
+             trip.day.toLowerCase() === day.trim().toLowerCase() &&
+             trip.passengers === passengers.trim();
+    });
+
+    navigation.navigate('Results', { from, to, day, passengers, results: filteredTrips });
   };
 
   return (
@@ -153,6 +165,7 @@ function HomeTabs() {
 }
 function TripCard({ trip }) {
   return (
+    <TouchableOpacity onPress={() => navigation.navigate('TripDetail', { trip })}>
     <View style={resultsStyles.card}>
       <View style={resultsStyles.header}>
         <Text style={resultsStyles.headerTextCentered}>{trip.from} -> {trip.to}</Text>
@@ -161,9 +174,9 @@ function TripCard({ trip }) {
       <View style={resultsStyles.timeline}>
         <Text style={resultsStyles.time}>{trip.startTime}</Text>
         <View style={resultsStyles.line}>
-          <View style={resultsStyles.dot}></View>
+          <View style={[resultsStyles.dot, resultsStyles.firstDot]}></View>
           <View style={resultsStyles.lineFill}></View>
-          <View style={resultsStyles.dot}></View>
+          <View style={[resultsStyles.dot, resultsStyles.lastDot]}></View>
         </View>
         <Text style={resultsStyles.time}>{trip.endTime}</Text>
       </View>
@@ -176,10 +189,11 @@ function TripCard({ trip }) {
           </View>
         </View>
         <View style={resultsStyles.passengerInfo}>
-          <Text style={resultsStyles.passengerText}>{trip.passengers} pass.</Text>
+          <Text style={resultsStyles.passengerText}>{trip.passengers} Passengers</Text>
         </View>
       </View>
     </View>
+    </TouchableOpacity>
   );
 }
 
@@ -260,28 +274,43 @@ const resultsStyles = StyleSheet.create({
       color: '#333',
   },
   line: {
+    flex: 1,
+    flexDirection: 'row',
+    height: 1,
+    backgroundColor: 'transparent', // Making sure the line background doesn't interfere
+    marginHorizontal: 10,
+    alignItems: 'center', // Ensures vertical centering
+    position: 'relative', // Important for absolute positioning of the dots
+  },
+  dot: {
+    width: 8,
+    height: 8,
+    backgroundColor: 'red',
+    borderRadius: 4,
+    position: 'absolute', // Positioning absolutely within the parent container
+  },
+  line: {
       flex: 1,
       flexDirection: 'row',
       height: 1,
       backgroundColor: '#ccc',
       marginHorizontal: 10,
+      position: 'relative', // Essential for absolute positioning of the dots
+      alignItems: 'center',
   },
-  dot: {
-      width: 8,
-      height: 8,
-      backgroundColor: 'red',
-      borderRadius: 4,
+  firstDot: {
+      left: 0, // Align this dot to the left edge
+      marginTop: -4, // Vertically center the dot
   },
-  lineFill: {
-      height: 1,
-      backgroundColor: 'green',
-      flex: 1,
+  lastDot: {
+      right: 0, // Align this dot to the right edge
+      marginTop: -4, // Vertically center the dot
   },
   driverAndPassengerInfo: {
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'space-between',  // Ensures the driver info and passenger count are on opposite ends
-      width: '100%',  // Use the full width of the card
+      justifyContent: 'space-between',  
+      width: '100%',  
   },
   driverInfo: {
       flexDirection: 'row',
