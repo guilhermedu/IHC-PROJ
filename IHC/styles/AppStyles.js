@@ -124,10 +124,19 @@ export const resultsStyles = StyleSheet.create({
 });
 
 export const detailStyles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-start', // Ensure content starts at the top of the container
+        paddingTop: 0, // Remove padding at the top if previously set
+        paddingHorizontal: 10, // Maintain horizontal padding
+        backgroundColor: '#f5f5f5', // Background color of the screen
+    },
     card: {
         backgroundColor: '#FFF',
         padding: 20,
-        marginVertical: 10,
+        marginTop: 10, // Minimal top margin to push card slightly from the very top
+        marginBottom: 10,
         borderRadius: 10,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
@@ -135,61 +144,66 @@ export const detailStyles = StyleSheet.create({
         shadowRadius: 1.5,
         elevation: 3,
         width: '90%',
-        alignSelf: 'center',
     },
     header: {
-        marginBottom: 10,
+        flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        width: '100%',
+        marginBottom: 20,
     },
     headerTextCentered: {
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: 'bold',
-        textAlign: 'center'
+        textAlign: 'center',
     },
-    timeline: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: 10,
+    backButton: {
+        marginLeft: -10
     },
-    time: {
+    detailText: {
         fontSize: 16,
         color: '#333',
+        marginVertical: 5,
     },
-    line: {
-        flex: 1,
-        flexDirection: 'row',
-        height: 1,
-        backgroundColor: '#ccc',
-        marginHorizontal: 10,
-        position: 'relative',
+    verticalDotsLine: {
+        flexDirection: 'column',
+        height: 60,
+        justifyContent: 'space-between',
         alignItems: 'center',
+        marginVertical: 10,
     },
     dot: {
         width: 8,
         height: 8,
-        backgroundColor: 'red',
+        backgroundColor: '#333',
         borderRadius: 4,
-        position: 'absolute',
     },
-    firstDot: {
-        left: 0,
-        marginTop: -4,
+    horizontalLine: {
+        width: '100%',
+        height: 1,
+        backgroundColor: '#ccc',
+        marginVertical: 10,
     },
-    lastDot: {
-        right: 0,
-        marginTop: -4,
-    },
-    driverAndPassengerInfo: {
+    iconRow: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        width: '100%',
+        marginBottom: 10,
+    },
+    icon: {
+        width: 24, // Set a specific size for icons
+        height: 24,
+        marginRight: 10, // Add some space between the icon and text
     },
     driverInfo: {
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '100%',
+        paddingVertical: 10,
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
+        borderColor: '#ccc',
+        marginTop: 10,
+        marginBottom: 20,
     },
     driverImage: {
         width: 50,
@@ -197,25 +211,18 @@ export const detailStyles = StyleSheet.create({
         borderRadius: 25,
         marginRight: 10,
     },
-    driverDetails: {
-        flexDirection: 'column',
-        justifyContent: 'center',
-    },
     driverName: {
         fontSize: 16,
         fontWeight: 'bold',
+        flex: 1,
+    },
+    reservationButton: {
+        width: '90%',
+        alignSelf: 'center',
+        marginVertical: 20,
     },
     rating: {
         fontSize: 16,
         color: '#ffd700',
-    },
-    passengerInfo: {
-        marginLeft: 5,
-    },
-    passengerText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#666',
-    },
+    }
 });
-
