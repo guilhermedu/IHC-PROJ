@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import resultsStyles from '../styles/AppStyles'; // assuming you export styles from AppStyles
+import { resultsStyles } from '../styles/AppStyles';
+import { Ionicons } from '@expo/vector-icons';
+
 
 export default function TripCard({ trip, navigation }) {
     return (

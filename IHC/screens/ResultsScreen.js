@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { View, Text, Button, TextInput } from 'react-native';
-import styles from '../styles/AppStyles';
+import React from 'react';
+import { View, ScrollView } from 'react-native';
+import { resultsStyles } from '../styles/AppStyles';
+import TripCard from '../components/TripCard';  // Ensure TripCard is imported if it's used
 
-export default function ResultsScreen({ navigation }) {
+export default function ResultsScreen({ route, navigation }) {
     const { results } = route.params;
 
     return (

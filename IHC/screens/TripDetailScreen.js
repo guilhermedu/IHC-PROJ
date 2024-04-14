@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, Button, TextInput } from 'react-native';
-import styles from '../styles/AppStyles';
+import { View, Text, Button, TextInput, Image } from 'react-native'; // Include Image here
+import { detailStyles } from '../styles/AppStyles';
+import peticon from '../assets/pet.png'; // Update path as needed
+import smokeicon from '../assets/smoke.png'; // Update path as needed
+import bookicon from '../assets/book.png'; // Update path as needed
+import driverpfp from '../assets/icon.png';
+import { Ionicons } from '@expo/vector-icons';
 
-export default function TripDetailScreen({ navigation }) {
+export default function TripDetailScreen({ route, navigation }) {
     const { trip } = route.params;
     return ( 
         <View style={detailStyles.container}>

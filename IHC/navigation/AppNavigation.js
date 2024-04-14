@@ -1,6 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import LoginScreen from '../screens/LoginScreen'; // Make sure you have the correct path
 import HomeScreen from '../screens/HomeScreen';
 import ResultsScreen from '../screens/ResultsScreen';
 import TripDetailScreen from '../screens/TripDetailScreen';
@@ -37,10 +38,11 @@ function HomeTabs() {
 
 export default function AppNavigation() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Home" component={HomeTabs} />
-      <Stack.Screen name="Results" component={ResultsScreen} />
-      <Stack.Screen name="TripDetail" component={TripDetailScreen} />
+      <Stack.Screen name="Results" component={ResultsScreen} options={{ headerShown: true }} />
+        <Stack.Screen name="TripDetail" component={TripDetailScreen} options={{ headerShown: true }} />
     </Stack.Navigator>
   );
 }

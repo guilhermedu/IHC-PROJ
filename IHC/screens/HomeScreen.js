@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, Button, TextInput } from 'react-native';
-import styles from '../styles/AppStyles';
+import { styles } from '../styles/AppStyles';
+import driverpfp from '../assets/icon.png'
+
+
 
 export default function HomeScreen({ navigation }) {
     const [from, setFrom] = useState('');
