@@ -1,14 +1,30 @@
 import React, { useState } from 'react';
-import { View, Text, Button, TextInput } from 'react-native';
-import { styles } from '../styles/AppStyles';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { AccountScreenStyles } from '../styles/AppStyles';
+import logo from '../assets/logo.png';
+import fotoperfil from '../assets/marcosilva.png';
 
 
 export default function AccountScreen({ route }) {
-    const { username } = route.params ? route.params : { username: 'guest' };
+    
     return (
-        <View style={styles.container}>
-          <Text>Account Page</Text>
-          <Text>Welcome, {username}!</Text>
+        <View style={AccountScreenStyles.container}>
+          <Image source={logo} style={AccountScreenStyles.logo1} />
+          <Image source={fotoperfil} style={AccountScreenStyles.fotoperfil} />
+          <Text style={AccountScreenStyles.username}>Marco Silva</Text>
+          <TouchableOpacity style={AccountScreenStyles.button1}>
+          <Text style={AccountScreenStyles.buttonText}>Carros</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={AccountScreenStyles.button2}>
+          <Text style={AccountScreenStyles.buttonText}>Histórico</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={AccountScreenStyles.button3}>
+          <Text style={AccountScreenStyles.buttonText}>Conta</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={AccountScreenStyles.button4}>
+          <Text style={AccountScreenStyles.buttonText}>Sobre ti</Text>
+          </TouchableOpacity>
+          
         </View>
       );
 }

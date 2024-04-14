@@ -76,6 +76,97 @@ export const registerStyles = StyleSheet.create({
       },
 });
 
+export const AccountScreenStyles = StyleSheet.create({
+    logo1:{
+        position: 'absolute',
+        top: -20,
+        width: 150,
+        height: 100,
+        alignSelf: 'center',
+    },
+    fotoperfil: {
+        position: 'absolute',
+        top: 100,
+        right: 20,
+        width: 150,
+        height: 150,
+        borderRadius: 75,
+    },
+    container: {
+        backgroundColor: '#fff',
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 20,
+    },
+    username:{
+        position: 'absolute',
+        top: 140,
+        left: 20,
+        fontSize: 35,
+        fontWeight: 'bold',
+    },
+    button1: {
+        position: 'absolute',
+        top: 300,
+        left: 30,
+        width: 150,
+        height: 150,
+        backgroundColor: '#33afb5',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+    },
+    buttonText: {
+        color: 'black',
+        fontSize: 26,
+    },
+    button2: {
+        position: 'absolute',
+        top: 460,
+        left: 30,
+        width: 150,
+        height: 150,
+        backgroundColor: '#33afb5',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+    },
+    button3: {
+        position: 'absolute',
+        top: 300,
+        right: 30,
+        width: 150,
+        height: 150,
+        backgroundColor: '#33afb5',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+    },
+    button4: {
+        position: 'absolute',
+        top: 460,
+        right: 30,
+        width: 150,
+        height: 150,
+        backgroundColor: '#33afb5',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+    },
+
+
+    
+});
+
 
 export const resultsStyles = StyleSheet.create({
     card: {
