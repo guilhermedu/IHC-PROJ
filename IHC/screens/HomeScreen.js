@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, Button, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput,Image } from 'react-native';
 import { styles } from '../styles/AppStyles';
 import driverpfp from '../assets/icon.png'
-
+import logo from '../assets/logo.png';
 
 
 export default function HomeScreen({ navigation }) {
@@ -10,6 +10,7 @@ export default function HomeScreen({ navigation }) {
     const [to, setTo] = useState('');
     const [day, setDay] = useState('');
     const [passengers, setPassengers] = useState('');
+    
   
     const searchTrips = () => {
       const allTrips = [
@@ -73,11 +74,14 @@ export default function HomeScreen({ navigation }) {
   
     return (
       <View style={styles.container}>
+        <Image source={logo} style={styles.logo1} />
         <TextInput style={styles.input} placeholder="From" value={from} onChangeText={setFrom} />
         <TextInput style={styles.input} placeholder="To" value={to} onChangeText={setTo} />
         <TextInput style={styles.input} placeholder="Day" value={day} onChangeText={setDay} />
         <TextInput style={styles.input} placeholder="Passengers" value={passengers} onChangeText={setPassengers} keyboardType="numeric" />
-        <Button title="Search" onPress={searchTrips} />
+        <TouchableOpacity onPress={searchTrips} style={styles.button}>
+          <Text style={styles.buttonText}>Search</Text>
+        </TouchableOpacity>
       </View>
     );
 }

@@ -30,6 +30,13 @@ export const styles = StyleSheet.create({
         width: 400,
         height: 300,
     },
+    logo1:{
+        position: 'absolute',
+        top: -20,
+        width: 150,
+        height: 100,
+        alignSelf: 'center',
+    },
    
     button1: {
         backgroundColor: '#ffffff',
@@ -44,7 +51,7 @@ export const styles = StyleSheet.create({
     },
 
     button: {
-        backgroundColor: '#007BFF',
+        backgroundColor: '#33afb5',
         padding: 10,
         borderRadius: 5,
         width:300,

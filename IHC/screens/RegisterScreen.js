@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity ,Image} from 'react-native';
 import { registerStyles, styles } from '../styles/AppStyles';
+import logo from '../assets/logo.png';
 
 export default function RegisterScreen({ navigation }) {
+  const [name, setUsername] = useState('');
   const [email, setemail] = useState('');
   const [password, setPassword] = useState('');
   const [comfirmpassword, setComfirmPassword] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
 
   function register() {
-    if (email === 'MarcoSilva@ua.pt' && password === '1' && comfirmpassword==='1' && phoneNumber ==='961111111') {
+    if (name==='Marco Silva' && email === 'MarcoSilva@ua.pt' && password === '1' && comfirmpassword==='1' && phoneNumber ==='961111111') {
       alert('User registered successfully.');
       navigation.replace('Home');
     } else {
@@ -22,6 +24,13 @@ export default function RegisterScreen({ navigation }) {
       <TouchableOpacity style={registerStyles.backButton} onPress={() => navigation.navigate("Login")}>
         <Text style={registerStyles.backButtonText}>←</Text>
       </TouchableOpacity>
+      <Image source={logo} style={styles.logo} />
+      <TextInput
+        style={styles.input}
+        placeholder="Username"
+        value={name}
+        onChangeText={setUsername}
+      />
       <TextInput
         style={styles.input}
         placeholder="Email"
