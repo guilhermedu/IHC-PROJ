@@ -7,6 +7,7 @@ import ResultsScreen from '../screens/ResultsScreen';
 import TripDetailScreen from '../screens/TripDetailScreen';
 import AccountScreen from '../screens/AccountScreen';
 import TripsScreen from '../screens/TripsScreen';
+import RegisterScreen from '../screens/RegisterScreen';
 import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createNativeStackNavigator();
@@ -39,6 +40,7 @@ function HomeTabs() {
 export default function AppNavigation() {
   return (
     <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Home" component={HomeTabs} />
       <Stack.Screen name="Results" component={ResultsScreen} options={{ headerShown: true }} />

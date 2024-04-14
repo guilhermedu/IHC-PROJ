@@ -1,8 +1,9 @@
 // AppStyles.js
-import { StyleSheet } from 'react-native';
+import { Button, StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
+        backgroundColor: '#fff',
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
@@ -24,8 +25,50 @@ export const styles = StyleSheet.create({
         marginVertical: 5,
         borderWidth: 1,
         borderColor: '#ccc',
-    }
+    },
+    logo:{
+        width: 400,
+        height: 300,
+    },
+   
+    button1: {
+        backgroundColor: '#ffffff',
+        padding: 20,
+        borderRadius: 5,
+        alignItems: 'center',
+    },
+      buttonText1: {
+        color: 'black',
+        fontSize: 14,
+        
+    },
+
+    button: {
+        backgroundColor: '#007BFF',
+        padding: 10,
+        borderRadius: 5,
+        width:300,
+        marginTop: 10,
+      },
+    buttonText: {
+        color: 'white',
+        fontSize: 18,
+        textAlign: 'center',
+    },
+    
 });
+
+export const registerStyles = StyleSheet.create({
+    backButton: {
+        position: 'absolute',
+        top: 10, 
+        left: 10, 
+    },
+    backButtonText: {
+        fontSize: 60,
+      },
+});
+
 
 export const resultsStyles = StyleSheet.create({
     card: {
@@ -121,6 +164,7 @@ export const resultsStyles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#666',
     },
+   
 });
 
 export const detailStyles = StyleSheet.create({
