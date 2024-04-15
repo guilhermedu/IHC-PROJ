@@ -62,7 +62,7 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
     },
-    
+      
 });
 
 export const registerStyles = StyleSheet.create({
@@ -197,36 +197,23 @@ export const CarrosScreenstyles = StyleSheet.create({
         right: 0, 
         textAlign: 'center', 
     },
-    button: {
-        position: 'absolute',
-        top: 150,
-        left: 30,
-        width: 350,
-        height: 140,
-        backgroundColor: '#ffffff',
-        padding: 20,
-        borderRadius: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderWidth: 1,
-    },
-    carro1:{
-        position: 'absolute',
-        top: 0,
+    carro1: {
         width: 140,
-        height: 138,
-        left: 0,
-    },
-    buttonText: {
+        height: 140,
+        marginLeft:0, 
+        marginTop: -104,
+        marginLeft:-20,
+      },
+      
+      buttonText: {
         color: 'black',
-        fontSize: 18,
-        right: 0,
-        textAlignVertical: 'top',
-    },
-    button: {
-        position: 'absolute',
+        fontSize: 15,
+        textAlign: 'right',
+        marginRight: -10, 
+      },
+      
+      button: {
         top: 150,
-        left: 30,
         width: 350,
         height: 140,
         backgroundColor: '#ffffff',
@@ -234,7 +221,53 @@ export const CarrosScreenstyles = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 1,
         flexDirection: 'column', 
-        alignItems: 'flex-end',
+        marginBottom: 10, 
+      },
+    buttonrem: {
+        backgroundColor: '#33afb5',
+        padding: 10,
+        borderRadius: 5,
+        width:160,
+        marginTop: 150,
+        left:190,
+      },
+    buttonTextrem: {
+        color: 'white',
+        fontSize:18,
+        textAlign: 'center',
+    },
+    buttonadd: {
+        backgroundColor: '#33afb5',
+        padding: 10,
+        borderRadius: 5,
+        width:160,
+        marginTop: -45,
+      },
+    buttonTextadd: {
+        color: 'white',
+        fontSize:18,
+        textAlign: 'center',
+    },
+    buttonadd1: {
+        backgroundColor: '#33afb5',
+        padding: 10,
+        borderRadius: 5,
+        width:250,
+        marginTop:10,
+        left:50,
+    },
+    buttonTextadd1: {
+        color: 'white',
+        fontSize: 18,
+        textAlign: 'center',
+        justifyContent:'center',
+    }, 
+    input: {
+        width: '100%',
+        height: 40,
+        marginTop: 10,
+        borderWidth: 1,
+        padding: 10,
     },
     
 
