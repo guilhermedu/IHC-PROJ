@@ -8,6 +8,10 @@ import TripDetailScreen from '../screens/TripDetailScreen';
 import AccountScreen from '../screens/AccountScreen';
 import TripsScreen from '../screens/TripsScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import CarrosScreen from '../screens/CarrosScreen';
+import HistoricoScreen from '../screens/HistoricoScreen';
+import ContaScreen from '../screens/ContaScreen';
+import SobreTiScreen from '../screens/SobreTiScreen';
 import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createNativeStackNavigator();
@@ -43,6 +47,10 @@ export default function AppNavigation() {
       <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Home" component={HomeTabs} />
+      <Stack.Screen name="Carros" component={CarrosScreen} />
+      <Stack.Screen name="Historico" component={HistoricoScreen} />
+      <Stack.Screen name="Conta" component={ContaScreen} />
+      <Stack.Screen name="SobreTi" component={SobreTiScreen} />
       <Stack.Screen name="Results" component={ResultsScreen} options={{ headerShown: true }} />
         <Stack.Screen name="TripDetail" component={TripDetailScreen} options={{ headerShown: true }} />
     </Stack.Navigator>

@@ -7,7 +7,7 @@ import logo from '../assets/logo.png';
 export default function LoginScreen({ navigation }) {
     const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
-    
+  
     
     function authenticate() {
       if ((identifier === 'admin'|| identifier === '960000000') && password === '123' || (identifier === 'MarcoSilva@ua.pt' || identifier ==='961111111') && password === '1' ) {

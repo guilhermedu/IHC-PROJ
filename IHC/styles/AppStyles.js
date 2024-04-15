@@ -167,6 +167,80 @@ export const AccountScreenStyles = StyleSheet.create({
     
 });
 
+export const CarrosScreenstyles = StyleSheet.create({
+    logo1:{
+        position: 'absolute',
+        top: 10,
+        width: 150,
+        height: 100,
+        alignSelf: 'center',
+    },
+    container: {
+        backgroundColor: '#fff',
+        flex: 1,
+        padding: 20,
+    },
+    backButton: {
+        position: 'absolute',
+        top: 10, 
+        left: 10, 
+    },
+    backButtonText: {
+        fontSize: 60,
+    },
+    title: {
+        fontSize: 24,
+        marginBottom: 20,
+        position: 'absolute', 
+        top: 90, 
+        left: 0, 
+        right: 0, 
+        textAlign: 'center', 
+    },
+    button: {
+        position: 'absolute',
+        top: 150,
+        left: 30,
+        width: 350,
+        height: 140,
+        backgroundColor: '#ffffff',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+    },
+    carro1:{
+        position: 'absolute',
+        top: 0,
+        width: 140,
+        height: 138,
+        left: 0,
+    },
+    buttonText: {
+        color: 'black',
+        fontSize: 18,
+        right: 0,
+        textAlignVertical: 'top',
+    },
+    button: {
+        position: 'absolute',
+        top: 150,
+        left: 30,
+        width: 350,
+        height: 140,
+        backgroundColor: '#ffffff',
+        padding: 20,
+        borderRadius: 10,
+        borderWidth: 1,
+        flexDirection: 'column', 
+        alignItems: 'flex-end',
+    },
+    
+
+    
+    
+});
 
 export const resultsStyles = StyleSheet.create({
     card: {
