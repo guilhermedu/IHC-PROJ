@@ -166,7 +166,49 @@ export const AccountScreenStyles = StyleSheet.create({
 
     
 });
-
+export const HomeScreenStyles = StyleSheet.create({
+    logo:{
+        width: 400,
+        height: 300,
+        
+    },  
+    container: {
+        backgroundColor: '#fff',
+        flex: 1,
+        alignItems: 'center',
+        padding: 20,
+    },
+    button: {
+        position: 'absolute',
+        top: 300,
+        left: 30,
+        width: 150,
+        height: 150,
+        backgroundColor: '#33afb5',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+    },
+    button2: {
+        position: 'absolute',
+        top: 300,
+        right: 30,
+        width: 150,
+        height: 150,
+        backgroundColor: '#33afb5',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+    },
+    buttonText: {
+        color: 'black',
+        fontSize: 26,
+    }, 
+});
 export const CarrosScreenstyles = StyleSheet.create({
     logo1:{
         position: 'absolute',

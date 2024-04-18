@@ -13,6 +13,7 @@ import HistoricoScreen from '../screens/HistoricoScreen';
 import ContaScreen from '../screens/ContaScreen';
 import SobreTiScreen from '../screens/SobreTiScreen';
 import { Ionicons } from '@expo/vector-icons';
+import HomeScreen1 from '../screens/HomeScreen1';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -34,7 +35,7 @@ function HomeTabs() {
       tabBarActiveTintColor: 'tomato',
       tabBarInactiveTintColor: 'gray',
     })}>
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Home" component={HomeScreen1} />
       <Tab.Screen name="Trips" component={TripsScreen} />
       <Tab.Screen name="Account" component={AccountScreen} />
     </Tab.Navigator>
