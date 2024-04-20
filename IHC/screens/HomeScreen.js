@@ -6,7 +6,7 @@ export default function HomeScreen({ navigation }) {
     return (
         <View style={HomeScreenStyles.container}>
              <Image source={logo} style={HomeScreenStyles.logo} />
-            <TouchableOpacity style={HomeScreenStyles.button} onPress={() => navigation.navigate('AddRide')}>
+            <TouchableOpacity style={HomeScreenStyles.button} onPress={() => navigation.navigate('Origin')}>
                 <Text style={HomeScreenStyles.buttonText}>Add Ride</Text>
             </TouchableOpacity>
             <TouchableOpacity style={HomeScreenStyles.button2} onPress={() => navigation.navigate('Search')}>
