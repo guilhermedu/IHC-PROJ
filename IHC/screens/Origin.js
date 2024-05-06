@@ -13,7 +13,7 @@ export default function Origin({ navigation }) {
         latitudeDelta: 3,
         longitudeDelta: 1
     });
-    const [city, setCity] = useState('');
+    const [cityinitial, setCity] = useState('');
 
     const userLocation = async () => {
         let { status } = await Location.requestForegroundPermissionsAsync();
@@ -32,7 +32,7 @@ export default function Origin({ navigation }) {
     };
 
     const updateLocation = async () => {
-        const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${city}&key=fab00b89dac04afa8df2f08004793e0b`);
+        const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${cityinitial}&key=fab00b89dac04afa8df2f08004793e0b`);
         const data = await response.json();
 
         if (data.results && data.results.length > 0) {
@@ -46,6 +46,7 @@ export default function Origin({ navigation }) {
             });
         }
     };
+    
 
     useEffect(() => {
         userLocation();
@@ -70,7 +71,7 @@ export default function Origin({ navigation }) {
             <TouchableOpacity style={Originstyles.button1} onPress={userLocation}>
                 <Text style={Originstyles.buttonText1}>Get Origin</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={Originstyles.nextButton} onPress={() => navigation.navigate('Destination')}>
+            <TouchableOpacity style={Originstyles.nextButton} onPress={() => navigation.navigate('Destination',{ city: cityinitial })}>
                 <Text style={Originstyles.backButtonText}>→</Text>
             </TouchableOpacity>
         </View>

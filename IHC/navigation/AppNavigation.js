@@ -16,6 +16,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Search from '../screens/Search';
 import Origin from '../screens/Origin';
 import Destination from '../screens/Destination';
+import Itenerary from '../screens/Itenerary';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -53,6 +54,7 @@ export default function AppNavigation() {
       <Stack.Screen name = "Search" component={Search} options={{headerShown : true}}/>
       <Stack.Screen name="Origin" component={Origin} />
       <Stack.Screen name="Destination" component={Destination} />
+      <Stack.Screen name="Itenerary" component={Itenerary} />
       <Stack.Screen name="Carros" component={CarrosScreen} />
       <Stack.Screen name="Historico" component={HistoricoScreen} />
       <Stack.Screen name="Conta" component={ContaScreen} />
