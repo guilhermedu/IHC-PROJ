@@ -11,58 +11,47 @@ export const styles = StyleSheet.create({
     },
     input: {
         width: '100%',
-        height: 40,
-        marginBottom: 10,
-        borderWidth: 1,
-        padding: 10,
-    },
-    title: {
-        fontSize: 24,
-        marginBottom: 20,
-    },
-    resultContainer: {
-        padding: 10,
-        marginVertical: 5,
-        borderWidth: 1,
+        height: 50,
+        backgroundColor: '#fff',
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        marginVertical: 10,
         borderColor: '#ccc',
+        borderWidth: 1,
     },
-    logo:{
-        width: 400,
-        height: 300,
+    inputPicker: {
+        width: '100%',
+        height: 50,
+        backgroundColor: '#fff',
+        borderRadius: 5,
+        marginVertical: 10,
+        borderColor: '#ccc',
+        borderWidth: 1,
+        justifyContent: 'center',
     },
-    logo1:{
+    picker: {
+        color: '#000',
+        fontSize: 16,
+    },
+    logo1: {
         position: 'absolute',
         top: -20,
         width: 150,
         height: 100,
         alignSelf: 'center',
     },
-   
-    button1: {
-        backgroundColor: '#ffffff',
-        padding: 20,
-        borderRadius: 5,
-        alignItems: 'center',
-    },
-      buttonText1: {
-        color: 'black',
-        fontSize: 14,
-        
-    },
-
     button: {
         backgroundColor: '#33afb5',
         padding: 10,
         borderRadius: 5,
-        width:300,
+        width: 300,
         marginTop: 10,
-      },
+    },
     buttonText: {
         color: 'white',
         fontSize: 18,
         textAlign: 'center',
     },
-      
 });
 
 export const registerStyles = StyleSheet.create({
