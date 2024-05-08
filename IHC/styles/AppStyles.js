@@ -583,6 +583,30 @@ export const detailStyles = StyleSheet.create({
         backgroundColor: '#ccc',
         marginVertical: 10,
     },
+    driverAndPassengerInfo: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '100%',
+    },
+    driverInfo: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    driverImage: {
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        marginRight: 10,
+    },
+    driverDetails: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+    },
+    driverName: {
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
     iconRow: {
         flexDirection: 'row',
         alignItems: 'center',

@@ -13,13 +13,13 @@ export default function TripDetailScreen({ route, navigation }) {
         <View style={detailStyles.container}>
                 <Text style={detailStyles.headerTextCentered}>{trip.date}</Text>
                 <View style={detailStyles.card}>
-                    <Text style={detailStyles.detailText}>Starts: {trip.startTime} at {trip.startLocation}</Text>
+                    <Text style={detailStyles.detailText}>Starts: {trip.startTime} at {trip.from}</Text>
                     <View style={detailStyles.verticalDotsLine}>
                         <View style={detailStyles.dot}></View>
                         <View style={{ height: 50, width: 1, backgroundColor: '#ccc' }}></View>
                         <View style={detailStyles.dot}></View>
                     </View>
-                    <Text style={detailStyles.detailText}>Ends: {trip.endTime} at {trip.endLocation}</Text>
+                    <Text style={detailStyles.detailText}>Ends: {trip.endTime} at {trip.to}</Text>
                     <View style={detailStyles.horizontalLine} />
                     <Text style={detailStyles.detailText}>Price per Person: {trip.price}</Text>
                     <View style={detailStyles.horizontalLine} />
@@ -40,7 +40,7 @@ export default function TripDetailScreen({ route, navigation }) {
                         <Text style={detailStyles.detailText}>Instant Reservation: {trip.driver.reserva}</Text>
                     </View>
                     <View style={detailStyles.driverInfo}>
-                        <Image source={driverpfp} style={detailStyles.driverImage} />
+                    <Image source={typeof trip.driver.imageUrl === 'string' ? { uri: trip.driver.imageUrl } : trip.driver.imageUrl} style={detailStyles.driverImage} />
                         <Text style={detailStyles.driverName}>{trip.driver.name}</Text>
                         <Ionicons name="arrow-forward" size={24} color="black" onPress={() => navigation.navigate('DriverProfile', { driverId: trip.driver.id })} />
                     </View>

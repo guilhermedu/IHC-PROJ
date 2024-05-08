@@ -33,7 +33,7 @@ export default function ReservationScreen({ navigation, route }) {
     return (
         <View style={reservationStyles.container}>
             <Text style={reservationStyles.headerText}>Choose Payment Method</Text>
-            <PaymentOption option="Credit Card" />
+            <PaymentOption option="MBWAY" />
             <PaymentOption option="PayPal" />
             <PaymentOption option="Bank Transfer" />
             <TouchableOpacity

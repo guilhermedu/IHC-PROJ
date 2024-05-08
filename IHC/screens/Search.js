@@ -3,6 +3,9 @@ import { View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { styles } from '../styles/AppStyles'; // Assuming this path is correct
 import driverpfp from '../assets/icon.png';
+import condutor1 from '../assets/condutor1.png';
+import condutor2 from '../assets/condutor2.png';
+import condutor3 from '../assets/condutor3.png';
 import logo from '../assets/logo.png';
 
 export default function Search({ navigation }) {
@@ -32,8 +35,8 @@ export default function Search({ navigation }) {
                 duration: '30 mins',
                 date: '14/04/2024',
                 driver: {
-                    name: 'Adrego da Rocha',
-                    imageUrl: driverpfp,
+                    name: 'Pedro Silva',
+                    imageUrl: condutor1,
                     rating: 4.5,
                     car: 'Opel Corsa',
                     matricula: 'FF-XX-21',
@@ -53,8 +56,8 @@ export default function Search({ navigation }) {
                 duration: '45 mins',
                 date: '24/04/2024',
                 driver: {
-                    name: 'Sr Engenheiro',
-                    imageUrl: driverpfp,
+                    name: 'Pedro Paixão',
+                    imageUrl: condutor3,
                     rating: 4.8,
                     car: 'Opel Corsa',
                     matricula: 'FF-XX-21',
@@ -75,7 +78,7 @@ export default function Search({ navigation }) {
                 date: '24/04/2024',
                 driver: {
                     name: 'Carlos Silva',
-                    imageUrl: driverpfp,
+                    imageUrl: condutor2,
                     rating: 4.3,
                     car: 'Opel Corsa',
                     matricula: 'ZZ-XX-21',
