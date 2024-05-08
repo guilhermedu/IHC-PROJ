@@ -1,6 +1,71 @@
 // AppStyles.js
 import { StyleSheet } from 'react-native';
-
+export const reservationStyles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 20,
+        backgroundColor: '#f7f7f7',
+    },
+    headerText: {
+        fontSize: 24,
+        marginBottom: 20,
+        color: '#333',
+        fontWeight: 'bold',
+    },
+    paymentOption: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+        padding: 15,
+        marginVertical: 10,
+        backgroundColor: '#fff',
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        elevation: 3,
+    },
+    selectedOption: {
+        borderColor: '#33b5e5',
+    },
+    radioCircle: {
+        height: 24,
+        width: 24,
+        borderRadius: 12,
+        borderWidth: 2,
+        borderColor: '#ccc',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginRight: 10,
+    },
+    radioDot: {
+        height: 12,
+        width: 12,
+        borderRadius: 6,
+        backgroundColor: '#33b5e5',
+    },
+    optionText: {
+        fontSize: 18,
+        color: '#333',
+    },
+    confirmButton: {
+        backgroundColor: '#33b5e5',
+        padding: 12,
+        borderRadius: 8,
+        marginTop: 20,
+        width: '100%',
+        alignItems: 'center',
+    },
+    confirmButtonText: {
+        color: '#fff',
+        fontSize: 18,
+    }
+});
 export const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',

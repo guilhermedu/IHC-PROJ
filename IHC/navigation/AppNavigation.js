@@ -18,6 +18,7 @@ import Origin from '../screens/Origin';
 import Destination from '../screens/Destination';
 import Itenerary from '../screens/Itenerary';
 import ChooseDay from '../screens/ChooseDay';
+import ReservationScreen from '../screens/ReservationScreen'; 
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -62,7 +63,8 @@ export default function AppNavigation() {
       <Stack.Screen name="Conta" component={ContaScreen} />
       <Stack.Screen name="SobreTi" component={SobreTiScreen} />
       <Stack.Screen name="Results" component={ResultsScreen} options={{ headerShown: true }} />
-        <Stack.Screen name="TripDetail" component={TripDetailScreen} options={{ headerShown: true }} />
+      <Stack.Screen name="TripDetail" component={TripDetailScreen} options={{ headerShown: true }} />
+      <Stack.Screen name="Reservation" component={ReservationScreen} options={{ headerShown: true }} />
     </Stack.Navigator>
   );
 }

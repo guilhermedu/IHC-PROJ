@@ -37,14 +37,14 @@ export default function TripDetailScreen({ route, navigation }) {
                     </View>
                     <View style={detailStyles.iconRow}>
                         <Image source={bookicon} style={detailStyles.icon} />
-                        <Text style={detailStyles.detailText}>Reservation Needed: {trip.driver.reserva}</Text>
+                        <Text style={detailStyles.detailText}>Instant Reservation: {trip.driver.reserva}</Text>
                     </View>
                     <View style={detailStyles.driverInfo}>
                         <Image source={driverpfp} style={detailStyles.driverImage} />
                         <Text style={detailStyles.driverName}>{trip.driver.name}</Text>
                         <Ionicons name="arrow-forward" size={24} color="black" onPress={() => navigation.navigate('DriverProfile', { driverId: trip.driver.id })} />
                     </View>
-                    <Button title="Book Reservation" onPress={() => {/* Handle reservation logic here */}} style={detailStyles.reservationButton} />
+                    <Button title="Book Reservation" onPress={() => {navigation.navigate('Reservation',{trip})}} style={detailStyles.reservationButton} />
                 </View> 
         </View>
     );
