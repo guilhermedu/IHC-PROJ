@@ -34,6 +34,7 @@ export default function Origin({ navigation }) {
     const updateLocation = async () => {
         const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${cityinitial}&key=fab00b89dac04afa8df2f08004793e0b`);
         const data = await response.json();
+        console.log(cityinitial);
 
         if (data.results && data.results.length > 0) {
             const location = data.results[0].geometry;
