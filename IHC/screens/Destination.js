@@ -7,10 +7,13 @@ import logo from '../assets/logo.png';
 
 export default function Destination({ navigation, route }) {
     const [origin, setOrigin] = useState(null);
+    const [destinationCoordinates, setDestinationCoordinates] = useState(null);
 
     useEffect(() => {
       if (route.params) {
         setOrigin(route.params.city);
+        setmapRegion(route.params.coordinateinitial);
+        
       }
     }, []);
   
@@ -54,11 +57,22 @@ export default function Destination({ navigation, route }) {
               onChangeText={text => setCity(text)}
               onSubmitEditing={updateLocation}
           />
-          <MapView style={Originstyles.map}
-              region={mapRegion} >
-              <Marker coordinate={mapRegion} title="Destination" />
-          </MapView>
-          <TouchableOpacity style={Originstyles.nextButton} onPress={() => navigation.navigate('Itenerary',{ City: origin, destination: cityfinal })}>
+         <MapView 
+            style={Originstyles.map}
+            region={mapRegion}
+            onPress={(e) => {
+                setDestinationCoordinates({
+                latitude: e.nativeEvent.coordinate.latitude,
+                longitude: e.nativeEvent.coordinate.longitude,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421
+                });
+            }}
+            >
+            <Marker coordinate={mapRegion} title="Destination" />
+            {destinationCoordinates && <Marker coordinate={destinationCoordinates} title="User Selected Destination" />}
+            </MapView>
+          <TouchableOpacity style={Originstyles.nextButton} onPress={() => navigation.navigate('Itenerary',{ City: origin, destination: cityfinal,coordinatefinal:destinationCoordinates,coordinateinitial:mapRegion })}>
               <Text style={Originstyles.backButtonText}>→</Text>
           </TouchableOpacity>
       </View>

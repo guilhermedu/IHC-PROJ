@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
 import { Originstyles } from '../styles/AppStyles';
-import { Picker } from '@react-native-picker/picker';
 import MapView, { Marker, Polyline } from 'react-native-maps';
 import * as Location from 'expo-location';
 import axios from 'axios';
@@ -12,7 +11,6 @@ export default function Itenerary({ route, navigation }) {
   const [origin, setOrigin] = useState(null);
   const [destination, setDestination] = useState(null);
   const [coordinates, setCoordinates] = useState([]);
-  const [routes, setRoutes] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -27,6 +25,10 @@ export default function Itenerary({ route, navigation }) {
         console.log(route.params.City);
         const destinationCity = route.params.destination;
         console.log(route.params.destination);
+        const coordinatesinitial = route.params.coordinateinitial;
+        console.log(route.params.coordinateinitial);
+        const coordinatesfinal = route.params.coordinatefinal;
+        console.log(route.params.coordinatefinal);
 
         const getCoordinates = async (city) => {
           const response = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${city}&key=fab00b89dac04afa8df2f08004793e0b`);
@@ -34,9 +36,9 @@ export default function Itenerary({ route, navigation }) {
           return { latitude: lat, longitude: lng };
         }
 
-        const originCoordinates = await getCoordinates(originCity);
+        const originCoordinates = coordinatesinitial ? coordinatesinitial : await getCoordinates(originCity);
         console.log(originCoordinates);
-        const destinationCoordinates = await getCoordinates(destinationCity);
+        const destinationCoordinates = coordinatesfinal ? coordinatesfinal : await getCoordinates(destinationCity);
         console.log(destinationCoordinates);
 
         setOrigin(originCoordinates);
@@ -60,12 +62,12 @@ export default function Itenerary({ route, navigation }) {
     <View style={Originstyles.container}>
       {origin && (
         <MapView
-          style={{ flex: 1 }}
+        style={Originstyles.map}
           initialRegion={{
             latitude: origin.latitude,
             longitude: origin.longitude,
-            latitudeDelta: 3,
-            longitudeDelta: 1,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
           }}
         >
           <Marker coordinate={origin} />
@@ -82,7 +84,7 @@ export default function Itenerary({ route, navigation }) {
       <TouchableOpacity style={Originstyles.backButton} onPress={() => navigation.navigate("Destination")}>
         <Text style={Originstyles.backButtonText}>←</Text>
       </TouchableOpacity>
-         <TouchableOpacity style={Originstyles.nextButton} onPress={() => navigation.navigate("ChooseDay")}>
+         <TouchableOpacity style={Originstyles.nextButton} onPress={() => navigation.navigate("AddRide")}>
               <Text style={Originstyles.backButtonText}>→</Text>
         </TouchableOpacity>
       <Image source={logo} style={Originstyles.logo1} />

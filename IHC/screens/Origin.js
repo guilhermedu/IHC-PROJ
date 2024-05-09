@@ -14,6 +14,7 @@ export default function Origin({ navigation }) {
         longitudeDelta: 1
     });
     const [cityinitial, setCity] = useState('');
+    const [userSelectedCoordinates, setUserSelectedCoordinates] = useState(null);
 
     const userLocation = async () => {
         let { status } = await Location.requestForegroundPermissionsAsync();
@@ -22,12 +23,14 @@ export default function Origin({ navigation }) {
             return;
         }
         let location = await Location.getCurrentPositionAsync({ enableHighAccuracy: true });
-        setmapRegion({
+        const userCoordinates = {
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421
-        });
+        };
+        setmapRegion(userCoordinates);
+        setUserSelectedCoordinates(userCoordinates);
         console.log(location.coords.latitude, location.coords.longitude);
     };
 
@@ -65,14 +68,25 @@ export default function Origin({ navigation }) {
                 onChangeText={text => setCity(text)}
                 onSubmitEditing={updateLocation}
             />
-            <MapView style={Originstyles.map}
-                region={mapRegion} >
-                <Marker coordinate={mapRegion} title="Origin" />
+            <MapView 
+            style={Originstyles.map}
+            region={mapRegion}
+            onPress={(e) => {
+                setUserSelectedCoordinates({
+                latitude: e.nativeEvent.coordinate.latitude,
+                longitude: e.nativeEvent.coordinate.longitude,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421
+                });
+            }}
+            >
+            <Marker coordinate={mapRegion} title="Origin" />
+            {userSelectedCoordinates && <Marker coordinate={userSelectedCoordinates} title="User Selected Location" />}
             </MapView>
             <TouchableOpacity style={Originstyles.button1} onPress={userLocation}>
                 <Text style={Originstyles.buttonText1}>Get Origin</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={Originstyles.nextButton} onPress={() => navigation.navigate('Destination',{ city: cityinitial })}>
+            <TouchableOpacity style={Originstyles.nextButton} onPress={() => navigation.navigate('Destination',{ city: cityinitial,coordinateinitial:userSelectedCoordinates })}>
                 <Text style={Originstyles.backButtonText}>→</Text>
             </TouchableOpacity>
         </View>

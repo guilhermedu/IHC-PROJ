@@ -74,7 +74,7 @@ export default function ChooseDay() {
         style={{height: 50, borderColor: 'gray', borderWidth: 3, borderRadius: 10, width: 150, textAlign: 'center', alignSelf: 'left', marginLeft: 35}}
         onChangeText={text => setHour(text)}
         value={hour}
-        placeholder="Enter hour"
+        placeholder="Enter price"
         keyboardType="numeric"
       />
 

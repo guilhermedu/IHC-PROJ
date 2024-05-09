@@ -309,7 +309,7 @@ export const CarrosScreenstyles = StyleSheet.create({
       },
       
       button: {
-        top: 150,
+        top: 120,
         width: 350,
         height: 140,
         backgroundColor: '#ffffff',
@@ -364,6 +364,49 @@ export const CarrosScreenstyles = StyleSheet.create({
         marginTop: 10,
         borderWidth: 1,
         padding: 10,
+    },
+    buttonyes: {
+        backgroundColor: '#33afb5',
+        padding: 10,
+        borderRadius: 5,
+        width: 150,
+        marginTop: 10,
+    },
+    buttonno: {
+        backgroundColor: '#33afb5',
+        padding: 10,
+        borderRadius: 5,
+        width: 150,
+        marginTop: 10,
+    },
+    buttonTextyes: {
+        color: '#fff',
+        fontSize: 18,
+        marginRight: -10,
+        textAlign: 'center', 
+    },
+    confirmButton: {
+        backgroundColor: '#33afb5',
+        padding: 12,
+        borderRadius: 8,
+        marginTop: 5,
+        width: '60%',
+        alignItems: 'center',
+    },
+    confirmButtonText: {
+        color: '#fff',
+        fontSize: 18,
+    },
+    publishButton: {
+        backgroundColor: '#33afb5',
+        padding: 12,
+        borderRadius: 8,
+        marginTop: 10,
+        width: '100%',
+        alignItems: 'center',
+    },
+    selected: {
+        backgroundColor: '#33afb5',
     },
     
 
