@@ -46,15 +46,15 @@ export default function Search({ navigation }) {
                 }
             },
             {
-                startTime: '12:00',
-                endTime: '12:45',
+                startTime: '15:00',
+                endTime: '15:45',
                 from: 'OVAR',
                 to: 'AVEIRO',
                 day: 'Tuesday',
-                passengers: '2',
+                passengers: '1',
                 price: '3,00$',
                 duration: '45 mins',
-                date: '24/04/2024',
+                date: '14/04/2024',
                 driver: {
                     name: 'Pedro Paixão',
                     imageUrl: condutor3,
