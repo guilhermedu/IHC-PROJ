@@ -19,6 +19,7 @@ import Destination from '../screens/Destination';
 import Itenerary from '../screens/Itenerary';
 import ChooseDay from '../screens/ChooseDay';
 import ReservationScreen from '../screens/ReservationScreen'; 
+import AddRideScreen from '../screens/AddRideScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -58,6 +59,7 @@ export default function AppNavigation() {
       <Stack.Screen name="Destination" component={Destination} />
       <Stack.Screen name="Itenerary" component={Itenerary} />
       <Stack.Screen name="ChooseDay" component={ChooseDay} />
+      <Stack.Screen name="AddRideScreen" component={AddRideScreen} />
       <Stack.Screen name="Carros" component={CarrosScreen} />
       <Stack.Screen name="Historico" component={HistoricoScreen} />
       <Stack.Screen name="Conta" component={ContaScreen} />

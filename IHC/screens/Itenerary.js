@@ -84,7 +84,7 @@ export default function Itenerary({ route, navigation }) {
       <TouchableOpacity style={Originstyles.backButton} onPress={() => navigation.navigate("Destination")}>
         <Text style={Originstyles.backButtonText}>←</Text>
       </TouchableOpacity>
-         <TouchableOpacity style={Originstyles.nextButton} onPress={() => navigation.navigate("AddRide")}>
+         <TouchableOpacity style={Originstyles.nextButton} onPress={() => navigation.navigate("ChooseDay")}>
               <Text style={Originstyles.backButtonText}>→</Text>
         </TouchableOpacity>
       <Image source={logo} style={Originstyles.logo1} />

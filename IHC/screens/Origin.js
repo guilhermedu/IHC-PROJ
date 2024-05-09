@@ -84,7 +84,7 @@ export default function Origin({ navigation }) {
             {userSelectedCoordinates && <Marker coordinate={userSelectedCoordinates} title="User Selected Location" />}
             </MapView>
             <TouchableOpacity style={Originstyles.button1} onPress={userLocation}>
-                <Text style={Originstyles.buttonText1}>Get Origin</Text>
+                <Text style={Originstyles.buttonText1}> Set Current Location</Text>
             </TouchableOpacity>
             <TouchableOpacity style={Originstyles.nextButton} onPress={() => navigation.navigate('Destination',{ city: cityinitial,coordinateinitial:userSelectedCoordinates })}>
                 <Text style={Originstyles.backButtonText}>→</Text>

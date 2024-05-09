@@ -542,6 +542,8 @@ export const Originstyles = StyleSheet.create({
         backgroundColor: '#33afb5',
         padding: 10,
         borderRadius: 5,
+        borderWidth: 3,
+        borderColor: "black",
         alignItems: 'center',
         width: 290,
         bottom: -60,
@@ -566,62 +568,92 @@ export const Originstyles = StyleSheet.create({
     },
 });
 
-export const Cdaystyles = StyleSheet.create({
-    title:{
-        fontSize: 24,
-        marginBottom: 10,
-        marginTop: 15,
-        alignSelf: "left",
-        marginLeft: 35,
-        fontWeight: 'bold'
+export const Cdaystyles = {
+    outerContainer: {
+      flex: 1,
+      backgroundColor: '#ffffff',
+      alignItems: 'center',
+
     },
-    logo1:{
-        marginTop: 20,
-        top: 10,
-        width: 150,
-        height: 100,
-        alignSelf: 'center',
-    },
-    container: {
-        backgroundColor: '#fff',
-        flex: 1,
-        padding: 20,
+    scrollContainer: {
+      flexGrow: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingVertical: 20,
+      paddingTop: -20,
     },
     backButton: {
-        position: 'absolute',
-        top: 10, 
-        left: 10, 
+      position: 'absolute',
+      top: 20,
+      left: 20,
+      zIndex: 1,
     },
     backButtonText: {
         fontSize: 58,
     },
-    button1: {
-        backgroundColor: '#33afb5',
-        padding: 10,
-        borderRadius: 5,
-        alignItems: 'center',
-        width: 290,
-        bottom: -60,
-    
+    logo1: {
+      width: 100,
+      height: 100,
+      marginTop: 20,
+      marginBottom: 10,
     },
-    buttonText1: {
-        color: '#fff',
-        fontSize: 18,
+    title: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      marginVertical: 10,
+
     },
-    nextButton: {
-        position: 'absolute',
-        bottom: 20, 
-        right: 10, 
+    centeredHourContainer: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginVertical: 10,
     },
-    input: {
-        width: '100%',
-        height: 40,
-        borderWidth: 1,
-        borderRadius: 15,
-        padding: 10,
-        top: 80,
+    inputPicker: {
+      borderColor: '#ccc',
+      borderWidth: 1,
+      borderRadius: 10,
+      overflow: 'hidden',
     },
-});
+    picker: {
+      width: 100,
+      height: 40,
+    },
+    colon: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      marginHorizontal: 5,
+    },
+    passengerContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginVertical: 10,
+    },
+    passengerButton: {
+      padding: 10,
+      backgroundColor: '#ccc',
+      borderRadius: 10,
+      marginHorizontal: 5,
+    },
+    passengerButtonText: {
+      fontSize: 24,
+      fontWeight: 'bold',
+    },
+    passengerText: {
+      fontSize: 24,
+      fontWeight: 'bold',
+    },
+    priceInput: {
+      width: '60%', // Adjusted width
+      padding: 10,
+      borderWidth: 1,
+      borderColor: '#ccc',
+      borderRadius: 10,
+      textAlign: 'center',
+      marginVertical: 10,
+      marginTop: -10
+    },
+  };
 
 export const detailStyles = StyleSheet.create({
     container: {
