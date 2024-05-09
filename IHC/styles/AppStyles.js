@@ -458,6 +458,63 @@ export const Originstyles = StyleSheet.create({
     },
 });
 
+export const Cdaystyles = StyleSheet.create({
+    title:{
+        fontSize: 24,
+        marginBottom: 10,
+        marginTop: 15,
+        alignSelf: "left",
+        marginLeft: 35,
+        fontWeight: 'bold'
+    },
+    logo1:{
+        marginTop: 20,
+        top: 10,
+        width: 150,
+        height: 100,
+        alignSelf: 'center',
+    },
+    container: {
+        backgroundColor: '#fff',
+        flex: 1,
+        padding: 20,
+    },
+    backButton: {
+        position: 'absolute',
+        top: 10, 
+        left: 10, 
+    },
+    backButtonText: {
+        fontSize: 58,
+    },
+    button1: {
+        backgroundColor: '#33afb5',
+        padding: 10,
+        borderRadius: 5,
+        alignItems: 'center',
+        width: 290,
+        bottom: -60,
+    
+    },
+    buttonText1: {
+        color: '#fff',
+        fontSize: 18,
+    },
+    nextButton: {
+        position: 'absolute',
+        bottom: 20, 
+        right: 10, 
+    },
+    input: {
+        width: '100%',
+        height: 40,
+        borderWidth: 1,
+        borderRadius: 15,
+        padding: 10,
+        top: 80,
+    },
+});
+
 export const detailStyles = StyleSheet.create({
     container: {
         flex: 1,
