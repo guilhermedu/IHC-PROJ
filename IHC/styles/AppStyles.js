@@ -366,35 +366,38 @@ export const CarrosScreenstyles = StyleSheet.create({
         padding: 10,
     },
     buttonyes: {
-        backgroundColor: '#33afb5',
+        backgroundColor: 'white',
         padding: 10,
         borderRadius: 5,
+        borderWidth:1,
         width: 150,
         marginTop: 10,
     },
     buttonno: {
-        backgroundColor: '#33afb5',
+        backgroundColor: 'white',
         padding: 10,
         borderRadius: 5,
+        borderWidth:1,
         width: 150,
         marginTop: 10,
     },
     buttonTextyes: {
-        color: '#fff',
+        color: 'black',
         fontSize: 18,
         marginRight: -10,
         textAlign: 'center', 
     },
     confirmButton: {
-        backgroundColor: '#33afb5',
+        backgroundColor: 'white',
         padding: 12,
         borderRadius: 8,
+        borderWidth:1,
         marginTop: 5,
         width: '60%',
         alignItems: 'center',
     },
     confirmButtonText: {
-        color: '#fff',
+        color: 'black',
         fontSize: 18,
     },
     publishButton: {
@@ -408,7 +411,9 @@ export const CarrosScreenstyles = StyleSheet.create({
     selected: {
         backgroundColor: '#33afb5',
     },
-    
+    buttonPressed: {
+        backgroundColor: '#33afb5', 
+    },
 
     
     
@@ -546,7 +551,8 @@ export const Originstyles = StyleSheet.create({
         borderColor: "black",
         alignItems: 'center',
         width: 290,
-        bottom: -60,
+        top:-565,
+        height: 50,
     
     },
     buttonText1: {
@@ -560,11 +566,11 @@ export const Originstyles = StyleSheet.create({
     },
     input: {
         width: '100%',
-        height: 40,
+        height: 50,
         borderWidth: 1,
         borderRadius: 15,
         padding: 10,
-        top: 80,
+        top: 70,
     },
 });
 
@@ -600,7 +606,7 @@ export const Cdaystyles = {
     title: {
       fontSize: 24,
       fontWeight: 'bold',
-      marginVertical: 10,
+      marginBottom: 7,
 
     },
     centeredHourContainer: {

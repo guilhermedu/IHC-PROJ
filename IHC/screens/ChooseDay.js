@@ -34,7 +34,7 @@ export default function ChooseDay({ navigation }) {
         <Text style={Cdaystyles.backButtonText}>←</Text>
       </TouchableOpacity>
       <Image source={logo} style={Cdaystyles.logo1} />
-
+      
       <Text style={Cdaystyles.title}>Choose Day</Text>
       <Calendar
         onDayPress={(day) => setSelected(day.dateString)}

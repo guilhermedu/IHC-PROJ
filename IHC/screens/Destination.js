@@ -7,26 +7,29 @@ import logo from '../assets/logo.png';
 
 export default function Destination({ navigation, route }) {
     const [origin, setOrigin] = useState(null);
+    const [mapRegion, setmapRegion] = useState(null);
+    const [coordinateinitial, setCoordinateinitial] = useState(null);
     const [destinationCoordinates, setDestinationCoordinates] = useState(null);
 
     useEffect(() => {
-      if (route.params) {
-        setOrigin(route.params.city);
-        setmapRegion(route.params.coordinateinitial);
-        
-      }
+        if (route.params) {
+            setOrigin(route.params.city);
+            setCoordinateinitial(route.params.coordinateinitial);
+            setmapRegion({
+                latitude: route.params.coordinateinitial.latitude,
+                longitude: route.params.coordinateinitial.longitude,
+                latitudeDelta: 3,
+                longitudeDelta: 1
+            });
+        }
     }, []);
-  
+
     useEffect(() => {
       console.log('Origin:', origin);
+      console.log('Coordinate:', coordinateinitial);
     }, [origin]);
 
-  const [mapRegion, setmapRegion] = useState({
-      latitude: 40.636400560338195,
-      longitude: -8.660183343715477,
-      latitudeDelta: 3,
-      longitudeDelta: 1
-  });
+  
   const [cityfinal, setCity] = useState('');
 
   const updateLocation = async () => {
@@ -72,7 +75,7 @@ export default function Destination({ navigation, route }) {
             <Marker coordinate={mapRegion} title="Destination" />
             {destinationCoordinates && <Marker coordinate={destinationCoordinates} title="User Selected Destination" />}
             </MapView>
-          <TouchableOpacity style={Originstyles.nextButton} onPress={() => navigation.navigate('Itenerary',{ City: origin, destination: cityfinal,coordinatefinal:destinationCoordinates,coordinateinitial:mapRegion })}>
+          <TouchableOpacity style={Originstyles.nextButton} onPress={() => navigation.navigate('Itenerary',{ City: origin, destination: cityfinal,coordinatefinal:destinationCoordinates,coordinateinitial:coordinateinitial })}>
               <Text style={Originstyles.backButtonText}>→</Text>
           </TouchableOpacity>
       </View>
