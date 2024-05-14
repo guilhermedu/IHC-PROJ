@@ -11,16 +11,16 @@ import logo from '../assets/logo.png';
 export default function Search({ navigation }) {
     const [from, setFrom] = useState('');
     const [to, setTo] = useState('');
-    const [month, setMonth] = useState('April');
-    const [day, setDay] = useState('14');
-    const [passengers, setPassengers] = useState('1');
+    const [month, setMonth] = useState('');
+    const [day, setDay] = useState('');
+    const [passengers, setPassengers] = useState('');
 
     const months = [
-        'January', 'February', 'March', 'April', 'May', 'June',
+        '', 'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'
     ];
 
-    const days = Array.from({ length: 31 }, (_, index) => (index + 1).toString());
+    const days = ['', ...Array.from({ length: 31 }, (_, index) => (index + 1).toString())];
 
     const searchTrips = () => {
         const allTrips = [
@@ -94,13 +94,15 @@ export default function Search({ navigation }) {
             return `${zeroPad(day, 2)}/${zeroPad(month, 2)}/${year}`;
         };
 
-        const formattedDate = formatDate(day, months.indexOf(month) + 1, 2024);
+        const formattedDate = day && month ? formatDate(day, months.indexOf(month), 2024) : '';
 
         const filteredTrips = allTrips.filter(trip => {
-            return trip.from.toLowerCase() === from.trim().toLowerCase() &&
-                   trip.to.toLowerCase() === to.trim().toLowerCase() &&
-                   trip.date === formattedDate &&
-                   trip.passengers === passengers.trim();
+            const fromMatch = !from || trip.from.toLowerCase() === from.trim().toLowerCase();
+            const toMatch = !to || trip.to.toLowerCase() === to.trim().toLowerCase();
+            const dateMatch = !formattedDate || trip.date === formattedDate;
+            const passengersMatch = !passengers || trip.passengers === passengers.trim();
+
+            return fromMatch && toMatch && dateMatch && passengersMatch;
         });
 
         navigation.navigate('Results', { from, to, day, passengers, results: filteredTrips });
