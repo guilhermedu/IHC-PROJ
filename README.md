@@ -39,7 +39,7 @@ Follow these steps to set up the project:
    ```bash
    npm install -g expo-cli
    ```
-4. ** Install dependencies:**
+4. **Install the following Expo packages:**
    ```bash
    npx expo install react-native-maps
    npx expo install expo-location
