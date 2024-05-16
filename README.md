@@ -7,8 +7,7 @@ Road Buddy is a ride-sharing app built using React Native and Expo. This README 
 2. [Installation](#installation)
 3. [Running the App](#running-the-app)
 4. [Troubleshooting](#troubleshooting)
-5. [Contributing](#contributing)
-6. [License](#license)
+
 
 ## Prerequisites
 
