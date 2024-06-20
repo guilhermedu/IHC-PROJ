@@ -1,5 +1,5 @@
 # RoadBuddy
-##Projeto IHC - 18 
+## Projeto IHC - 18 
 Road Buddy is a ride-sharing app built using React Native and Expo. This README file provides instructions on how to set up and run the project on your local machine.
 
 ## Table of Contents
